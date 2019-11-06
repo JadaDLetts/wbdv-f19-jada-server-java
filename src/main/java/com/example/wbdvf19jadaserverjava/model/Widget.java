@@ -1,4 +1,4 @@
-package com.example.whiteboard.model;
+package com.example.wbdvf19jadaserverjava.model;
 
 
 public class Widget {

@@ -1,12 +1,11 @@
-package com.example.whiteboard.model;
+package com.example.wbdvf19jadaserverjava.model;
 
-import com.example.whiteboard.model.*;
+import com.example.wbdvf19jadaserverjava.model.*;
 
 public class Course {
 	private String title;
     private int id;
     private int order;
-    private Widget widgets;
     private String cssClass;
     private String style;
 

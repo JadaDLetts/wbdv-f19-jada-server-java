@@ -1,7 +1,6 @@
-package com.example.whiteboard.services;
-import com.example.whiteboard.model.Course;
-import com.example.whiteboard.model.Widget;
+package com.example.wbdvf19jadaserverjava.services;
 
+import com.example.wbdvf19jadaserverjava.model.Widget;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
