@@ -44,9 +44,9 @@ public class CourseService {
         return courses;
     }
 
-    @GetMapping("/api/courses/{userId}")
+    @GetMapping("/api/courses/{courseId}")
     public Course findCourseById(
-            @PathVariable("userId") Integer id) {
+            @PathVariable("courseId") Integer id) {
         for (Course course : courses) {
             if (course.getId() == id) {
                 return course;
