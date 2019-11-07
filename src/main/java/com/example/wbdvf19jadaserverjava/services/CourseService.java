@@ -21,23 +21,22 @@ public class CourseService {
     }
 
     @PutMapping("/api/courses/{courseId")
-    public Course updateCourse(
+    public List<Course> updateCourse(
             @PathVariable("courseId") int id,
             @RequestBody Course newCourse) {
         for (Course course:courses) {
             if(course.getId() == id) {
                 course.setTitle(newCourse.getTitle());
-                return course;
             }
         }
-        return null;
+        return courses;
     }
 
     @PostMapping("/api/course")
-    public Course createCourse(
+    public List<Course> createCourse(
             @RequestBody Course course) {
         courses.add(course);
-        return course;
+        return courses;
     }
 
     @GetMapping("/api/courses")
