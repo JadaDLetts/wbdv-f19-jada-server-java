@@ -3,6 +3,7 @@ package com.example.wbdvf19jadaserverjava.model;
 
 public class Widget {
     private int id;
+
     enum type {
         HEADING, LIST, PARAGRAPH, IMAGE, LINK;
     }
@@ -85,10 +86,9 @@ public class Widget {
 
     public Widget() {}
 
-    public Widget(int id, String title, int width, int height, String url) {
+    public Widget(int id, String title, String type) {
         super();
         this.id = id;
-        this.width = width;
-        this.height = height;
+
     }
 }

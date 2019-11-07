@@ -2,19 +2,15 @@ package com.example.wbdvf19jadaserverjava.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.wbdvf19jadaserverjava.model.Widget;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-public class Widget {
-    static List<Widget> widgets = new ArrayList<~>();
+public class WidgetController {
+    static List<Widget> widgets = new ArrayList<>();
     static {
         widgets.add(new Widget(123, "Widget 1", "LIST"));
         widgets.add(new Widget(234, "Widget 2", "PARAGRAPH"));
@@ -35,7 +31,7 @@ public class Widget {
     @GetMapping("/api/widgets/{widgetId")
     public Widget findWidgetById(@PathVariable("widgetId") int wid){
         for (Widget w: widgets) {
-            if(w.getId().equals(wid))
+            if(w.getId() == wid)
                 return w;
         }
         return null;
@@ -52,7 +48,8 @@ public class Widget {
     public List<Widget> deleteWidget(@PathVariable("widgetId") int wid) {
         widgets = widgets
                 .stream()
-                .filter(widget -> !widget.getId().equals(wid))
+                .filter(widget -> !(widget.getId() == wid))
                 .collect(Collectors.toList());
+        return widgets;
     }
 }
