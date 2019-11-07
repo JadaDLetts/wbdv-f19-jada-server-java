@@ -3,7 +3,7 @@ package com.example.wbdvf19jadaserverjava.model;
 
 public class Widget {
     private int id;
-
+    private String title;
     enum type {
         HEADING, LIST, PARAGRAPH, IMAGE, LINK;
     }
@@ -12,7 +12,6 @@ public class Widget {
     private String url;
     private int width;
     private int height;
-    private String cssClass;
     private String style;
     private String value;
     enum dataType {
@@ -67,7 +66,6 @@ public class Widget {
         this.height = height;
     }
 
-
     public String getStyle() {
         return this.style;
     }
@@ -82,6 +80,14 @@ public class Widget {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Widget() {}
