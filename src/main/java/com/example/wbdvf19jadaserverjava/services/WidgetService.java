@@ -1,33 +1,3 @@
-//package com.example.wbdvf19jadaserverjava.services;
-//
-//import com.example.wbdvf19jadaserverjava.model.Widget;
-//import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//
-//@RestController
-//public class WidgetService {
-//    Widget wImage = new Widget(123, "Cat", 10, 10, "#");
-//    Widget wLink = new Widget(234, "Google", 0, 0, "https://www.google.com/" );
-//    Widget[] widgets = {wLink, wImage};
-//
-//    @GetMapping("/widgets")
-//    public Widget[] findAllWidgets() {
-//        return widgets;
-//    }
-//
-//    @GetMapping("/widgets/{userId}")
-//    public Widget findWidgetById(
-//            @PathVariable("userId") Integer id) {
-//                for (Widget widget : widgets) {
-//                    if (widget.getId() == id) {
-//                        return widget;
-//                }
-//            }
-//        return null;
-//    }
-//}
-
 package com.example.wbdvf19jadaserverjava.services;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +13,9 @@ public class WidgetService {
     {
         widgets.add(new Widget(123, "Widget 1", "HEADING"));
         widgets.add(new Widget(234, "Widget 2", "PARAGRAPH"));
+        widgets.add(new Widget(345, "Widget 3", "LINK"));
+        widgets.add(new Widget(456, "Widget 4", "IMAGE"));
+        widgets.add(new Widget(567, "Widget 5", "LIST"));
     }
 
     @PutMapping("/api/widgets/{widgetId}")
@@ -62,7 +35,7 @@ public class WidgetService {
             @RequestBody Widget widget) {
         widgets.add(widget);
         return widgets;
-    } //////////////////////////////////////////////////////////////////////////////////////////////////
+    } 
 
     @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
