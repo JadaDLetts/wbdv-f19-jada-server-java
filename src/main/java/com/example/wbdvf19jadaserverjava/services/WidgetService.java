@@ -35,7 +35,7 @@ public class WidgetService {
             @RequestBody Widget widget) {
         widgets.add(widget);
         return widgets;
-    } 
+    }
 
     @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
