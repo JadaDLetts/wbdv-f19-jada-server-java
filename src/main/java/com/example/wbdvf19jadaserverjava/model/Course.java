@@ -32,9 +32,10 @@ public class Course {
     }
 
     public Course() {}
-    public Course(int id, String title) {
+    public Course(int id, String title, int order) {
         super();
         this.id = id;
         this.title = title;
+        this.order = order;
     }
 }
