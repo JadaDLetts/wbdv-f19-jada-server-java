@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin("*")
 public class CourseService {
-    Course cs5610 = new Course(123, "CS5610");
-    Course cs4500 = new Course(234, "CS4500");
     List<Course> courses = new ArrayList<Course>();
 
     {
-        courses.add(new Course(123, "CS 5610"));
-        courses.add(new Course(234,"CS 4500"));
-        courses.add(new Course(345, "CS 4550"));
-        courses.add(new Course(456,"CS 3600"));
+        courses.add(new Course(123, "CS 5610", 1));
+        courses.add(new Course(234,"CS 4500", 2));
+        courses.add(new Course(345, "CS 4550", 3));
+        courses.add(new Course(456,"CS 3600", 4));
     }
 
     @PutMapping("/api/courses/{courseId}")
