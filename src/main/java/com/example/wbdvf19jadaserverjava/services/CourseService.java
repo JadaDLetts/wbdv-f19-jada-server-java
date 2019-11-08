@@ -14,8 +14,10 @@ public class CourseService {
     List<Course> courses = new ArrayList<Course>();
 
     {
-        courses.add(cs4500);
-        courses.add(cs5610);
+        courses.add(new Course(123, "CS 5610"));
+        courses.add(new Course(234,"CS 4500"));
+        courses.add(new Course(345, "CS 4550"));
+        courses.add(new Course(456,"CS 3600"));
     }
 
     @PutMapping("/api/courses/{courseId}")
