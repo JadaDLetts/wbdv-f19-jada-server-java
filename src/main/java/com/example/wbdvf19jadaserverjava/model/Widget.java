@@ -4,9 +4,7 @@ package com.example.wbdvf19jadaserverjava.model;
 public class Widget {
     private int id;
     private String title;
-    enum type {
-        HEADING, LIST, PARAGRAPH, IMAGE, LINK;
-    }
+    String type;
     private int order;
     private String text;
     private String url;
@@ -14,9 +12,7 @@ public class Widget {
     private int height;
     private String style;
     private String value;
-    enum dataType {
-        INT, STRING, DATE, BOOL;
-    }
+    String dataType;
 
     public int getId() {
         return this.id;
@@ -90,11 +86,21 @@ public class Widget {
         this.title = title;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Widget() {}
 
     public Widget(int id, String title, String type) {
         super();
         this.id = id;
+        this.title = title;
+        this.type = type;
 
     }
 }
