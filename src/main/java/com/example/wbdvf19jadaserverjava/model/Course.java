@@ -6,8 +6,6 @@ public class Course {
 	private String title;
     private int id;
     private int order;
-    private String cssClass;
-    private String style;
 
     public int getId() {
         return this.id;
