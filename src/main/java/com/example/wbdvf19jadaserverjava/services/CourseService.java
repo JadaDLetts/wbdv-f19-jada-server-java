@@ -16,6 +16,7 @@ public class CourseService {
         courses.add(new Course(234,"CS 4500", 2));
         courses.add(new Course(345, "CS 4550", 3));
         courses.add(new Course(456,"CS 3600", 4));
+        courses.add(new Course(567, "CS 3650", 5));
     }
 
     @PutMapping("/api/courses/{courseId}")
