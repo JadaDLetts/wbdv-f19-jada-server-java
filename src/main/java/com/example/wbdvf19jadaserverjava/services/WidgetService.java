@@ -30,7 +30,7 @@ public class WidgetService {
         return widgets;
     }
 
-    @PostMapping("/api/widget")
+    @PostMapping("/api/widgets")
     public List<Widget> createWidget(
             @RequestBody Widget widget) {
         widgets.add(widget);
