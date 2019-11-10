@@ -30,7 +30,7 @@ public class CourseService {
         return courses;
     }
 
-    @PostMapping("/api/course")
+    @PostMapping("/api/courses")
     public List<Course> createCourse(
             @RequestBody Course course) {
         courses.add(course);
