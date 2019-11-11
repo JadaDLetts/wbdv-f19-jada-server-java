@@ -1,11 +1,9 @@
 package com.example.wbdvf19jadaserverjava.model;
 
-import com.example.wbdvf19jadaserverjava.model.*;
 
 public class Course {
 	private String title;
     private int id;
-    private int order;
 
     public int getId() {
         return this.id;
