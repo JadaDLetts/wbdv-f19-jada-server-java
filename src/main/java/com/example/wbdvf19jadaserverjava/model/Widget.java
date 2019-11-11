@@ -2,7 +2,7 @@ package com.example.wbdvf19jadaserverjava.model;
 
 
 public class Widget {
-    private int id;
+    private long id;
     private String title;
     String type;
     private int order;
@@ -12,9 +12,8 @@ public class Widget {
     private int height;
     private String style;
     private String value;
-    String dataType;
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
@@ -86,17 +85,9 @@ public class Widget {
         this.title = title;
     }
 
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Widget() {}
 
-    public Widget(int id, String title, String type) {
+    public Widget(long id, String title, String type) {
         super();
         this.id = id;
         this.title = title;
