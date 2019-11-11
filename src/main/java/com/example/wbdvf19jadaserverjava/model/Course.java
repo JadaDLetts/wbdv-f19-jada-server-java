@@ -23,19 +23,10 @@ public class Course {
         this.title = title;
     }
 
-    public int getOrder() {
-        return this.order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
     public Course() {}
-    public Course(int id, String title, int order) {
+    public Course(int id, String title) {
         super();
         this.id = id;
         this.title = title;
-        this.order = order;
     }
 }
