@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 public class WidgetService {
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        widgets.add(new Widget(123, "Widget 1", "HEADING"));
-        widgets.add(new Widget(234, "Widget 2", "PARAGRAPH"));
-        widgets.add(new Widget(345, "Widget 3", "LINK"));
-        widgets.add(new Widget(456, "Widget 4", "IMAGE"));
-        widgets.add(new Widget(567, "Widget 5", "LIST"));
+        widgets.add(new Widget(123L, "Widget 1", "HEADING"));
+        widgets.add(new Widget(234L, "Widget 2", "PARAGRAPH"));
+        widgets.add(new Widget(345L, "Widget 3", "LINK"));
+        widgets.add(new Widget(456L, "Widget 4", "IMAGE"));
+        widgets.add(new Widget(567L, "Widget 5", "LIST"));
     }
 
     @PutMapping("/api/widgets/{widgetId}")
     public List<Widget> updateWidget(
-            @PathVariable("widgetId") int id,
+            @PathVariable("widgetId") long id,
             @RequestBody Widget newWidget) {
         for (Widget widget: widgets) {
             if(widget.getId() == id) {
@@ -44,7 +44,7 @@ public class WidgetService {
 
     @GetMapping("/api/widgets/{widgetId}")
     public Widget findWidgetById(
-            @PathVariable("widgetId") int id) {
+            @PathVariable("widgetId") long id) {
         for (Widget widget : widgets) {
             if (widget.getId() == id) {
                 return widget;
@@ -54,7 +54,7 @@ public class WidgetService {
     }
 
     @DeleteMapping("/api/widgets/{widgetId}")
-    public List<Widget> deleteWidget(@PathVariable("widgetId") int wid) {
+    public List<Widget> deleteWidget(@PathVariable("widgetId") long wid) {
         widgets = widgets
                 .stream()
                 .filter(widget -> !(widget.getId() == wid))
