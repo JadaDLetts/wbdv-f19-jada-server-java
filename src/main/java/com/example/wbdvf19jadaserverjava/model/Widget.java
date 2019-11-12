@@ -92,6 +92,7 @@ public class Widget {
         this.id = id;
         this.title = title;
         this.type = type;
+        this.value = type;
 
     }
 }
