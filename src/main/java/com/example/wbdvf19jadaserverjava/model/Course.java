@@ -3,13 +3,13 @@ package com.example.wbdvf19jadaserverjava.model;
 
 public class Course {
 	private String title;
-    private int id;
+    private long id;
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -22,7 +22,7 @@ public class Course {
     }
 
     public Course() {}
-    public Course(int id, String title) {
+    public Course(long id, String title) {
         super();
         this.id = id;
         this.title = title;
