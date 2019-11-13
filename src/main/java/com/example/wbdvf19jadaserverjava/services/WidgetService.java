@@ -18,7 +18,7 @@ public class WidgetService {
         widgets.add(new Widget(567L, "Widget 5", "LIST"));
     }
 
-    @PutMapping("/api/widgets/{widgetId}")
+    @PutMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
     public List<Widget> updateWidget(
             @PathVariable("widgetId") long id,
             @RequestBody Widget newWidget) {
@@ -30,19 +30,19 @@ public class WidgetService {
         return widgets;
     }
 
-    @PostMapping("/api/widgets")
+    @PostMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets")
     public List<Widget> createWidget(
             @RequestBody Widget widget) {
         widgets.add(widget);
         return widgets;
     }
 
-    @GetMapping("/api/widgets")
+    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets")
     public List<Widget> findAllWidgets() {
         return widgets;
     }
 
-    @GetMapping("/api/widgets/{widgetId}")
+    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
     public Widget findWidgetById(
             @PathVariable("widgetId") long id) {
         for (Widget widget : widgets) {
@@ -53,7 +53,7 @@ public class WidgetService {
         return null;
     }
 
-    @DeleteMapping("/api/widgets/{widgetId}")
+    @DeleteMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
     public List<Widget> deleteWidget(@PathVariable("widgetId") long wid) {
         widgets = widgets
                 .stream()
