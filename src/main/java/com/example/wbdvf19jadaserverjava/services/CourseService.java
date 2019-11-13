@@ -7,7 +7,7 @@ import com.example.wbdvf19jadaserverjava.model.Course;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("https://tranquil-refuge-56291.herokuapp.com/")
+@CrossOrigin("*")
 public class CourseService {
     List<Course> courses = new ArrayList<Course>();
 
@@ -19,7 +19,7 @@ public class CourseService {
         courses.add(new Course(567L, "CS 3650"));
     }
 
-    @PutMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
+    @PutMapping("/api/courses/{courseId}")
     public List<Course> updateCourse(
             @PathVariable("courseId") long id,
             @RequestBody Course newCourse) {
@@ -31,19 +31,19 @@ public class CourseService {
         return courses;
     }
 
-    @PostMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses")
+    @PostMapping("/api/courses")
     public List<Course> createCourse(
             @RequestBody Course course) {
         courses.add(course);
         return courses;
     }
 
-    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses")
+    @GetMapping("/api/courses")
     public List<Course> findAllCourses() {
         return courses;
     }
 
-    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
+    @GetMapping("/api/courses/{courseId}")
     public Course findCourseById(
             @PathVariable("courseId") long id) {
         for (Course course : courses) {
@@ -54,7 +54,7 @@ public class CourseService {
         return null;
     }
 
-    @DeleteMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
+    @DeleteMapping("/api/courses/{courseId}")
     public List<Course> deleteCourse(@PathVariable("courseId") long cor) {
         courses = courses
                 .stream()
