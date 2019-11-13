@@ -19,7 +19,7 @@ public class CourseService {
         courses.add(new Course(567L, "CS 3650"));
     }
 
-    @PutMapping("/api/courses/{courseId}")
+    @PutMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
     public List<Course> updateCourse(
             @PathVariable("courseId") long id,
             @RequestBody Course newCourse) {
@@ -31,19 +31,19 @@ public class CourseService {
         return courses;
     }
 
-    @PostMapping("/api/courses")
+    @PostMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses")
     public List<Course> createCourse(
             @RequestBody Course course) {
         courses.add(course);
         return courses;
     }
 
-    @GetMapping("/api/courses")
+    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses")
     public List<Course> findAllCourses() {
         return courses;
     }
 
-    @GetMapping("/api/courses/{courseId}")
+    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
     public Course findCourseById(
             @PathVariable("courseId") long id) {
         for (Course course : courses) {
@@ -54,7 +54,7 @@ public class CourseService {
         return null;
     }
 
-    @DeleteMapping("/api/courses/{courseId}")
+    @DeleteMapping("https://tranquil-refuge-56291.herokuapp.com/api/courses/{courseId}")
     public List<Course> deleteCourse(@PathVariable("courseId") long cor) {
         courses = courses
                 .stream()
