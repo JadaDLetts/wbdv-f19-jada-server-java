@@ -7,7 +7,7 @@ import com.example.wbdvf19jadaserverjava.model.Widget;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("https://tranquil-refuge-56291.herokuapp.com/")
+@CrossOrigin("*")
 public class WidgetService {
     List<Widget> widgets = new ArrayList<Widget>();
     {
@@ -18,7 +18,7 @@ public class WidgetService {
         widgets.add(new Widget(567L, "Widget 5", "LIST"));
     }
 
-    @PutMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
+    @PutMapping("/api/widgets/{widgetId}")
     public List<Widget> updateWidget(
             @PathVariable("widgetId") long id,
             @RequestBody Widget newWidget) {
@@ -30,19 +30,19 @@ public class WidgetService {
         return widgets;
     }
 
-    @PostMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets")
+    @PostMapping("/api/widgets")
     public List<Widget> createWidget(
             @RequestBody Widget widget) {
         widgets.add(widget);
         return widgets;
     }
 
-    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return widgets;
     }
 
-    @GetMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
+    @GetMapping("/api/widgets/{widgetId}")
     public Widget findWidgetById(
             @PathVariable("widgetId") long id) {
         for (Widget widget : widgets) {
@@ -53,7 +53,7 @@ public class WidgetService {
         return null;
     }
 
-    @DeleteMapping("https://tranquil-refuge-56291.herokuapp.com/api/widgets/{widgetId}")
+    @DeleteMapping("/api/widgets/{widgetId}")
     public List<Widget> deleteWidget(@PathVariable("widgetId") long wid) {
         widgets = widgets
                 .stream()
