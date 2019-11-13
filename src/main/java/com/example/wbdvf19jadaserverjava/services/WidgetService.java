@@ -7,7 +7,7 @@ import com.example.wbdvf19jadaserverjava.model.Widget;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("https://tranquil-refuge-56291.herokuapp.com/")
 public class WidgetService {
     List<Widget> widgets = new ArrayList<Widget>();
     {
