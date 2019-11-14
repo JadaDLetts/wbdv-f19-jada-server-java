@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.wbdvf19jadaserverjava.model.Type;
 import com.example.wbdvf19jadaserverjava.model.Widget;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,6 +60,34 @@ public class WidgetService {
                 .stream()
                 .filter(widget -> !(widget.getId() == wid))
                 .collect(Collectors.toList());
+        return widgets;
+    }
+
+    @PutMapping("/api/courses/{cid}/widgets/{wid}")
+    public List<Widget> setWidgetType
+            (@PathVariable("cid") int cid,
+             @PathVariable("wid") int wid,
+             @RequestBody String type) {
+        Type t;
+        switch(type) {
+            case "HEADING":
+                t = Type.HEADING;
+                break;
+            case "PARAGRAPH":
+                t = Type.PARAGRAPH;
+                break;
+            case "LIST":
+                t = Type.LIST;
+                break;
+            case "LINK":
+                t = Type.LINK;
+                break;
+            case "IMAGE":
+                t = Type.IMAGE;
+                break;
+            default:
+                throw new IllegalArgumentException("invalid type");
+        }
         return widgets;
     }
 }
