@@ -7,7 +7,7 @@ import com.example.wbdvf19jadaserverjava.model.Widget;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins="http://localhost:3000",allowCredentials="true",allowedHeaders="*")
 public class WidgetService {
     List<Widget> widgets = new ArrayList<Widget>();
     {
