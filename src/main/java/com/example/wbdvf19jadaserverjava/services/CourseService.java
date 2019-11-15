@@ -1,65 +1,111 @@
 package com.example.wbdvf19jadaserverjava.services;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.example.wbdvf19jadaserverjava.model.Course;
-import org.springframework.web.bind.annotation.*;
+import com.example.wbdvf19jadaserverjava.model.Type;
+import com.example.wbdvf19jadaserverjava.model.Widget;
 
-@RestController
-@CrossOrigin(origins="http://localhost:3000",allowCredentials="true",allowedHeaders="*")
 public class CourseService {
-    List<Course> courses = new ArrayList<Course>();
+    private List<Course> courses = new ArrayList<Course>();
+    public CourseService() {
+        Course cs5610 = new Course(123L, "CS 5610");
+        Course cs4500 = new Course(234L,"CS 4500");
+        Course cs4550 = new Course(345L, "CS 4550");
+        Course cs3600 = new Course(456L,"CS 3600");
+        Course cs3650 = new Course(567L, "CS 3650");
 
-    {
-        courses.add(new Course(123L, "CS 5610"));
-        courses.add(new Course(234L,"CS 4500"));
-        courses.add(new Course(345L, "CS 4550"));
-        courses.add(new Course(456L,"CS 3600"));
-        courses.add(new Course(567L, "CS 3650"));
+        courses.add(cs5610);
+
+        cs5610.addWidget(new Widget(123L, "New Heading", Type.HEADING));
+        cs5610.addWidget(new Widget(234L, "New List", Type.LIST));
+        cs5610.addWidget(new Widget(345L, "New Paragraph", Type.PARAGRAPH));
+
+        courses.add(cs4500);
+        courses.add(cs4550);
+        cs4550.addWidget(new Widget(456L, "New Hyperlink", Type.LINK));
+        cs4550.addWidget(new Widget(567L, "New Image", Type.IMAGE));
+
+        courses.add(cs3600);
+        cs3600.addWidget(new Widget(678L, "New Heading", Type.HEADING));
+        cs3600.addWidget(new Widget(789L, "New List", Type.LIST));
+        cs3600.addWidget(new Widget(890L, "New Paragraph", Type.PARAGRAPH));
+        courses.add(cs3650);
     }
 
-    @PutMapping("/api/courses/{courseId}")
-    public List<Course> updateCourse(
-            @PathVariable("courseId") long id,
-            @RequestBody Course newCourse) {
-        for (Course course : courses) {
-            if (course.getId() == id) {
-                course.setTitle(newCourse.getTitle());
-            }
-        }
-        return courses;
-    }
-
-    @PostMapping("/api/courses")
-    public List<Course> createCourse(
-            @RequestBody Course course) {
-        courses.add(course);
-        return courses;
-    }
-
-    @GetMapping("/api/courses")
     public List<Course> findAllCourses() {
-        return courses;
+        return this.courses;
     }
 
-    @GetMapping("/api/courses/{courseId}")
-    public Course findCourseById(
-            @PathVariable("courseId") long id) {
-        for (Course course : courses) {
-            if (course.getId() == id) {
+    public Course findCourseById(long courseId) {
+        for (Course course : this.courses) {
+            if (course.getId() == courseId) {
                 return course;
             }
         }
         return null;
     }
 
-    @DeleteMapping("/api/courses/{courseId}")
-    public List<Course> deleteCourse(@PathVariable("courseId") long cor) {
-        courses = courses
-                .stream()
-                .filter(course -> !(course.getId() == cor))
-                .collect(Collectors.toList());
-        return courses;
+    public void updateCourse(long courseId, Course course) {
+        for (Course c : this.courses) {
+            if (c.getId() == courseId) {
+                this.deleteCourse(courseId);
+                this.courses.add(course);
+            }
+        }
+    }
+
+    public void deleteCourse(long courseId) {
+        List<Course> cList = new ArrayList<>();
+        for(Course course : this.courses) {
+            if (course.getId() != courseId) {
+                this.courses.add(course);
+            }
+        }
+    }
+
+
+    void updateWidget(long courseId, long widgetId, Widget widget) {
+        for (Widget w: this.findCourseById(courseId).getWidgets()) {
+            if (w.getId() == widgetId) {
+                this.findCourseById(courseId).deleteWidget(w);
+                this.findCourseById(courseId).addWidget(widget);
+            }
+        }
+    }
+
+    List<Widget> findAllWidgets(long courseId) {
+
+        return this.findCourseById(courseId).getWidgets();
+    }
+
+    Widget findWidgetById(long courseId, long wid) {
+        for (Widget widg : this.findCourseById(courseId).getWidgets()) {
+            if (widg.getId() == wid) {
+                return widg;
+            }
+        }
+        return null;
+    }
+
+    void setWidgetType(long courseId, long widgetId, Type type) {
+        this.findCourseById(courseId).setWidgetType(widgetId, type);
+    }
+
+    void createWidget(long courseId) {
+        this.findCourseById(courseId).createWidget();
+    }
+
+    void deleteWidget(long courseId, long widgetId) {
+        for (Widget wid: this.findCourseById(courseId).getWidgets()) {
+            if (wid.getId() == widgetId) {
+                this.findCourseById(courseId).deleteWidget(wid);
+            }
+        }
+    }
+
+    public void createCourse(String title) {
+        this.courses.add(new Course((int)new Date().getTime(), title));
     }
 }
