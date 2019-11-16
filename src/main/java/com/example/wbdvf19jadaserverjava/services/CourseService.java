@@ -60,9 +60,10 @@ public class CourseService {
         List<Course> cList = new ArrayList<>();
         for(Course course : this.courses) {
             if (course.getId() != courseId) {
-                this.courses.add(course);
+                cList.add(course);
             }
         }
+        this.courses = cList;
     }
 
 
